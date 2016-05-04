@@ -14,7 +14,9 @@ When you submit the template to AWS it will ask you to fill out the following:
 - NodeInstanceRole: The name of the IAM role that will be assigned to the node instances. For CloudWatch logging to work, give this role CloudWatch write access.
 - NodesMin: Minimum number of nodes to keep alive at any time.
 - NodesMin: Maximum number of nodes to scale up to.
+
 ### Resources
+
 When you submit it to Amazon AWS, this template will create the following resources in your AWS account:
 - 1 VPC. All EC2 instances and network traffic are isolated here. The VPC works with the IP Range 10.0.0.0/16, but you don't need to worry about that.
 - 2 Subnets. They live in the VPC, one is for the 3 director instances and the other is for the nodes. The nodes subnet assigns nodes IPs between 10.0.0.1 and 10.0.127.254, so this subnet's mask is effectively 10.0.0.0/17. The directors subnet is much smaller, ranging from 10.0.128.1 to 10.0.128.254, with a submask of 10.0.128.0/24. In the directors subnet DHCP isn't used; all nodes will have known IPs. Also, both subnets will provide one public IP to all the instances.
